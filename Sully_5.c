@@ -8,7 +8,7 @@
 int	main(void)
 {
 	int		fd;
-	int		i = 5;
+	int		i = 4;
 	char	filename[10] = "Sully_ .c";
 	char	cmd[64], exec[64];
 
