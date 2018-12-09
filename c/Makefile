@@ -6,7 +6,7 @@
 #    By: ysan-seb <ysan-seb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/17 07:19:36 by ysan-seb          #+#    #+#              #
-#    Updated: 2018/12/07 23:44:17 by ysan-seb         ###   ########.fr        #
+#    Updated: 2018/12/09 15:24:14 by ysan-seb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,11 @@ G_NAME = _Grace/Grace
 
 S_NAME = _Sully/Sully
 
-C_PATH = ./_Colleen/
+C_SRC =		Colleen.c 
 
-G_PATH = ./_Grace/
+G_SRC =		Grace.c 
 
-S_PATH = ./_Sully/
-
-C_SRC =		$(C_PATH)Colleen.c 
-
-G_SRC =		$(G_PATH)Grace.c 
-
-S_SRC =		$(S_PATH)Sully.c 
+S_SRC =		Sully.c 
 
 C_OBJ = $(C_SRC:.c=.o)
 
