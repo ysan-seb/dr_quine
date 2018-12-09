@@ -1,16 +1,17 @@
 import os
 def main():
 	i = 5
-	if i > 0 and __file__ != 'Sully.py':
-		i = i - 1
-	elif i == 0:
+	if i <= 0:
 		return
-	conv = '%d'
+	if __file__ != 'Sully.py':
+		i = i - 1
 	filename = 'Sully_%d.py'%(i)
-	file = open(filename, 'w')
-	file_content = "import os%cdef main():%c%ci = %d%c%cif i > 0 and __file__ != 'Sully.py':%c%c%ci = i - 1%c%celif i == 0:%c%c%creturn%c%cconv = '%s'%c%cfilename = 'Sully_%s.py'%c(i)%c%cfile = open(filename, 'w')%c%cfile_content = %c%s%c%c%cfile.write(file_content%c(10,10,9,i,10,9,10,9,9,10,9,10,9,9,10,9,conv,10,9,conv,37,10,9,10,9,34,file_content,34,10,9,37,10,9,10,9,10,10,9))%c%cfile.close()%c%cos.system('python ' + filename)%cif __name__ == '__main__':%c%cmain()"
-	file.write(file_content%(10,10,9,i,10,9,10,9,9,10,9,10,9,9,10,9,conv,10,9,conv,37,10,9,10,9,34,file_content,34,10,9,37,10,9,10,9,10,10,9))
-	file.close()
+	try:
+		with open(filename, 'w') as file:
+			file_content = "import os{2}def main():{2}{1}i = {4}{2}{1}if i <= 0:{2}{1}{1}return{2}{1}if __file__ != 'Sully.py':{2}{1}{1}i = i - 1{2}{1}filename = 'Sully_{5}.py'%(i){2}{1}try:{2}{1}{1}with open(filename, 'w') as file:{2}{1}{1}{1}file_content = {3}{0}{3}{2}{1}{1}{1}file.write(file_content.format(file_content,chr(9),chr(10),chr(34),i,{3}{5}{3})){2}{1}except:{2}{1}{1}return{2}{1}os.system('python ' + filename){2}if __name__ == '__main__':{2}{1}main()"
+			file.write(file_content.format(file_content,chr(9),chr(10),chr(34),i,"%d"))
+	except:
+		return
 	os.system('python ' + filename)
 if __name__ == '__main__':
 	main()

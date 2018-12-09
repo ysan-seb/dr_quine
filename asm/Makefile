@@ -6,7 +6,7 @@
 #    By: ysan-seb <ysan-seb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/17 07:19:36 by ysan-seb          #+#    #+#              #
-#    Updated: 2018/12/09 15:27:45 by ysan-seb         ###   ########.fr        #
+#    Updated: 2018/12/09 15:31:23 by ysan-seb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,21 @@ G_NAME = Grace
 
 S_NAME = Sully
 
-C_SRC =		Colleen.c 
+C_SRC =		Colleen.s 
 
-G_SRC =		Grace.c 
+G_SRC =		Grace.s
 
-S_SRC =		Sully.c 
+S_SRC =		Sully.s 
 
-C_OBJ = $(C_SRC:.c=.o)
+C_OBJ = $(C_SRC:.s=.o)
 
-G_OBJ = $(G_SRC:.c=.o)
+G_OBJ = $(G_SRC:.s=.o)
 
-S_OBJ = $(S_SRC:.c=.o)
+S_OBJ = $(S_SRC:.s=.o)
 
 CC = gcc
+
+NASM = 
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -45,8 +47,8 @@ $(G_NAME):$(G_OBJ)
 $(S_NAME):$(S_OBJ)
 	$(CC) $(FLAGS) -o $(S_NAME) $(S_OBJ)
 
-%.o: %.c
-	$(CC) $(FLAGS) -o $@ -c  $<
+%.o: %.s
+	nasm -g -f macho64 -o $@ $< 
 
 clean	:
 	$(RM) $(C_OBJ)

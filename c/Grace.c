@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <fcntl.h>
-
-# define FORMAT	"#include <stdio.h>%c#include <fcntl.h>%c%c# define FORMAT%c%c%s%c%c# define PARAM%cFORMAT,10,10,10,9,34,FORMAT,34,10,9,10,9,34,34,10,10,10,9,10,10,10%c# define MAIN%cint main(void) { int file; file = open(%cGrace_kid.c%c, O_CREAT | O_RDWR, 0644); dprintf(file, PARAM); return (0);}%c%c/*%c%cComment%c*/%c%cMAIN;"
-# define PARAM	FORMAT,10,10,10,9,34,FORMAT,34,10,9,10,9,34,34,10,10,10,9,10,10,10
-# define MAIN	int main(void) { int file; file = open("Grace_kid.c", O_CREAT | O_RDWR, 0644); dprintf(file, PARAM); return (0);}
-
+#include <unistd.h>
+#define FORMAT "#include <stdio.h>%3$c#include <fcntl.h>%3$c#include <unistd.h>%3$c#define FORMAT %4$c%1$s%4$c%3$c#define PARAM FORMAT,FORMAT,9,10,34%3$c#define MAIN int main(void) { int fd; if ((fd = open(%4$cGrace_kid.c%4$c, O_CREAT | O_RDWR, 0644)) < 0) return (-1); dprintf(fd, PARAM); if (close(fd) < 0) return (-1); return (0);}%3$c/*%3$c%2$ccomment%3$c*/%3$cMAIN;%3$c"
+#define PARAM FORMAT,FORMAT,9,10,34
+#define MAIN int main(void) { int fd; if ((fd = open("Grace_kid.c", O_CREAT | O_RDWR, 0644)) < 0) return (-1); dprintf(fd, PARAM); if (close(fd) < 0) return (-1); return (0);}
 /*
-	Comment
+	comment
 */
-
 MAIN;

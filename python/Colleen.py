@@ -1,13 +1,9 @@
 import sys
-
 def quine(string):
-	print(string%(10,10,10,9,37,10,10,10,10,10,9,10,9,34,string,34,10,10,10,9))
-
+	print(string.format(string,chr(9),chr(10),chr(34)))
 # comment
-
 def main():
 	# comment
-	quine("import sys%c%cdef quine(string):%c%cprint(string%c(10,10,10,9,37,10,10,10,10,10,9,10,9,34,string,34,10,10,10,9))%c%c# comment%c%cdef main():%c%c# comment%c%cquine(%c%s%c)%c%cif __name__ == '__main__':%c%cmain()")
-
+	quine("import sys{2}def quine(string):{2}{1}print(string.format(string,chr(9),chr(10),chr(34))){2}# comment{2}def main():{2}{1}# comment{2}{1}quine({3}{0}{3}){2}if __name__ == '__main__':{2}{1}main()")
 if __name__ == '__main__':
 	main()
